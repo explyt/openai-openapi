@@ -27390,28 +27390,33 @@ components:
         id:
           type: string
           description: The model identifier, which can be referenced in the API endpoints.
+        context_length:
+          type: integer
+          description: The maximum context length for the model.
         created:
           type: integer
+          nullable: true
           description: The Unix timestamp (in seconds) when the model was created.
         object:
           type: string
+          nullable: true
           description: The object type, which is always "model".
           enum:
             - model
           x-stainless-const: true
         owned_by:
           type: string
+          nullable: true
           description: The organization that owns the model.
       required:
         - id
-        - object
-        - created
-        - owned_by
+        - context_length
       x-oaiMeta:
         name: The model object
         example: |
           {
             "id": "VAR_chat_model_id",
+            "context_length": 16000,
             "object": "model",
             "created": 1686935002,
             "owned_by": "openai"
